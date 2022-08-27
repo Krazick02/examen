@@ -46,7 +46,7 @@
             
 
             for (var i = 0; i < 100; i++) {
-                var n=new Cuadraro();
+                var n=new Cuadraro(generateRandomInteger(920),generateRandomInteger(720),20,100,"white");
                 obs.push(n);
             }
             hUP.src='hUP.jpeg';
@@ -70,7 +70,6 @@
 
 
             for (var i = 0; i < 100; i++) {
-                
                 obs[i].dibujar(ctx);
                 ctx.drawImage(wall,obs[i].x,obs[i].y,obs[i].w,obs[i].h);
             }
@@ -94,12 +93,14 @@
 
 
             if(pause){
+                tema.pause();
                 ctx.fillStyle="rgba(0,0,0,0.5)";                
                 ctx.fillRect(0,0,1000,800);
                 ctx.fillStyle="WHITE";
                 ctx.font="50px arial";             
                 ctx.fillText("P A U S E",400,380);
             }else{
+                tema.play();
                 update();
             }
         }
