@@ -21,11 +21,7 @@
         var player=null;
         var hormiguero=null;
         var cronometro;
-        var obs1=null;
-        var obs2=null;
-        var obs3=null;
-        var obs4=null;
-        var obs5=null;
+        var obs=[];
         var min=0;
         var seg=0;
         var direction='left';
@@ -47,11 +43,12 @@
              ctx.strokeRect(0,0,1000,1000);
             player =new Cuadraro(superX,superY,40,40,'blue');
             hormiguero =new Cuadraro(960,760,40,40,'red');
-            obs1 =new Cuadraro(150,100,200,20,'black');
-            obs2 =new Cuadraro(150,350,200,20,'black');
-            obs3 =new Cuadraro(150,600,200,20,'black');
-            obs4 =new Cuadraro(750,160,20,440,'black');
-            obs5 =new Cuadraro(600,160,20,440,'black');
+            
+
+            for (var i = 0; i < 100; i++) {
+                var n=new Cuadraro(generateRandomInteger(960),generateRandomInteger(760),40,40,'red');
+                obs.push(n);
+            }
             hUP.src='hUP.jpeg';
             hDOWN.src='hDOWN.jpeg';
             hRIGHT.src='hRIGTH.jpeg';
@@ -69,21 +66,13 @@
             ctx.font="30px arial";
             ctx.fillStyle="white";                
             ctx.fillText("TIME : "+min+":"+seg,30,60);
-            
-            //player.dibujar(ctx);
-            
-            //hormiguero.dibujar(ctx);
 
-            obs1.dibujar(ctx);           
-            obs2.dibujar(ctx);           
-            obs3.dibujar(ctx);           
-            obs4.dibujar(ctx);
-            obs5.dibujar(ctx);
-            ctx.drawImage(wall,obs1.x,obs1.y,200,20);
-            ctx.drawImage(wall,obs2.x,obs2.y,200,20);
-            ctx.drawImage(wall,obs3.x,obs3.y,200,20);
-            ctx.drawImage(wall,obs4.x,obs4.y,20,440);
-            ctx.drawImage(wall,obs5.x,obs5.y,20,440);
+
+            for (var i = 0; i < 100; i++) {
+                
+                obs[i].dibujar(ctx);
+                ctx.drawImage(wall,obs[i].x,obs[i].y,40,40);
+            }
 
 
             ctx.drawImage(fin,hormiguero.x,hormiguero.y,40,40);
@@ -150,7 +139,7 @@
                 ctx.fillText("YOUR TIME WAS = "+min+" min "+seg+ "segs",300,450);
                 crack.play();
             }
-            if(player.se_tocan(obs1) || player.se_tocan(obs2) || player.se_tocan(obs3) || player.se_tocan(obs4) || player.se_tocan(obs5)){
+            if(1==0){
                 if(direction=='rigth'){
                     player.x -=speed;
                     if(player.x >= 980){
