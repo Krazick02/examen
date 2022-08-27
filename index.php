@@ -33,8 +33,8 @@
         var hDOWN= new Image();
         var hRIGHT= new Image();
         var wall= new Image();
-        var crack= new Audio();
-        var choque= new Audio();
+        var win= new Audio();
+        var tema= new Audio();
 
         
         function start(){
@@ -46,7 +46,7 @@
             
 
             for (var i = 0; i < 100; i++) {
-                var n=new Cuadraro(generateRandomInteger(960),generateRandomInteger(760),40,40,'red');
+                var n=new Cuadraro();
                 obs.push(n);
             }
             hUP.src='hUP.jpeg';
@@ -55,8 +55,9 @@
             hLEFT.src='hLEFT.jpeg';
             fin.src='fin.jpeg';
             wall.src='wall.png';
-            crack.src='hueso_3.mp3';
-            choque.src='choque.mp3';
+            win.src='win.mp3';
+            tema.src='tema.mp3';
+            tema.play();
             paint();
         }
         function paint(){
@@ -71,7 +72,7 @@
             for (var i = 0; i < 100; i++) {
                 
                 obs[i].dibujar(ctx);
-                ctx.drawImage(wall,obs[i].x,obs[i].y,40,40);
+                ctx.drawImage(wall,obs[i].x,obs[i].y,obs[i].w,obs[i].h);
             }
 
 
@@ -137,7 +138,7 @@
                 ctx.fillText("Y O U  W I N",400,380);
                 ctx.font="30px arial";             
                 ctx.fillText("YOUR TIME WAS = "+min+" min "+seg+ "segs",300,450);
-                crack.play();
+                win.play();
             }
             obs.forEach(function(item,index,arr){
                 if(item.se_tocan(player)){
