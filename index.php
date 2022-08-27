@@ -139,8 +139,9 @@
                 ctx.fillText("YOUR TIME WAS = "+min+" min "+seg+ "segs",300,450);
                 crack.play();
             }
-            if(1==0){
-                if(direction=='rigth'){
+            obs.forEach(function(item,index,arr){
+                if(item.se_tocan(player)){
+                    if(direction=='rigth'){
                     player.x -=speed;
                     if(player.x >= 980){
                         player.x = 0;
@@ -164,7 +165,8 @@
                         player.x = 980;
                     }
                 }
-            }
+                }
+            });
 
         }
         function Cuadraro(x,y,w,h,c){
