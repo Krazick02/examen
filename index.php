@@ -8,7 +8,7 @@
 </head>
 <style>
     canvas {
-        background-color: orange   ;   
+        background-color: green   ;   
     }
 </style>
 <body onload="relog()">
